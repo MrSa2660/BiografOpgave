@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TopNavbar } from "./components/top-navbar/top-navbar";
+import { CinemaSelector } from "./cinema-selector/cinema-selector";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TopNavbar],
+  imports: [RouterOutlet, TopNavbar, CinemaSelector],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
