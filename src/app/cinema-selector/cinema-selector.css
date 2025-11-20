@@ -1,10 +1,8 @@
-/* Hvis du bruger det i en Angular-component kan du evt. bruge :host i stedet
-   for body, eller bare lade denne klasse stå alene */
 .cinema-selector {
-  height: 100vh;              /* i stedet for min-height */
-  padding: 3rem 1.5rem 2rem;  /* lidt mindre bund-padding */
-  box-sizing: border-box;     /* så padding tæller med i højden */
-  overflow: hidden;           /* ingen scroll inde i denne view */
+  height: 100vh;              
+  padding: 3rem 1.5rem 2rem;  
+  box-sizing: border-box;     
+  overflow: hidden;           
   background: #08152a;
   color: #ffffff;
   font-family: "Georgia", "Times New Roman", serif;
@@ -13,8 +11,6 @@
   align-items: center;
 }
 
-
-/* Header / logo */
 .cinema-selector__header {
   display: flex;
   flex-direction: column;
@@ -47,7 +43,6 @@
   font-weight: normal;
 }
 
-/* Grid med byer */
 .cinema-selector__grid {
   width: 100%;
   max-width: 900px;
@@ -56,7 +51,6 @@
   gap: 2rem;
 }
 
-/* Kortene */
 .city-card {
   border: 4px solid #ffffff;
   display: flex;
@@ -82,12 +76,10 @@
   font-family: inherit;
 }
 
-/* Lille hover-effekt */
 .city-card__bottom:hover {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* Responsiv: på små skærme bliver det til 1–2 kolonner */
 @media (max-width: 900px) {
   .cinema-selector__grid {
     grid-template-columns: repeat(2, 1fr);
