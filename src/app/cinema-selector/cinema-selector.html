@@ -1,0 +1,44 @@
+<div class="cinema-selector">
+  <header class="cinema-selector__header">
+    <div class="cinema-logo">
+      <div class="cinema-logo__circle"></div>
+      <span class="cinema-logo__text">Logo and name</span>
+    </div>
+
+    <h1 class="cinema-selector__title">
+      Select your city to discover movies now showing at our cinemas
+    </h1>
+  </header>
+
+  <section class="cinema-selector__grid">
+    <article class="city-card">
+      <div class="city-card__top">København</div>
+      <button class="city-card__bottom" [routerLink]="['/home', 'København']">View showtimes</button>
+    </article>
+
+    <article class="city-card">
+      <div class="city-card__top">Stor København</div>
+      <button class="city-card__bottom" [routerLink]="['/home', 'Stor København']">View showtimes</button>
+    </article>
+
+    <article class="city-card">
+      <div class="city-card__top">Aarhus</div>
+      <button class="city-card__bottom" [routerLink]="['/home', 'Aarhus']">View showtimes</button>
+    </article>
+
+    <article class="city-card">
+      <div class="city-card__top">Aalborg</div>
+      <button class="city-card__bottom" [routerLink]="['/home', 'Aalborg']">View showtimes</button>
+    </article>
+
+    <article class="city-card">
+      <div class="city-card__top">Fyn</div>
+      <button class="city-card__bottom" [routerLink]="['/home', 'Fyn']">View showtimes</button>
+    </article>
+
+    <article class="city-card">
+      <div class="city-card__top">Nykøbing Falster</div>
+      <button class="city-card__bottom" [routerLink]="['/home', 'Nykøbing Falster']">View showtimes</button>
+    </article>
+  </section>
+</div>
