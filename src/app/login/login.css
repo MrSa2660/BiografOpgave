@@ -1,0 +1,7 @@
+/* src/app/login/login.component.css */
+.login {
+  padding: 4.5rem 1.5rem 3rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #f9fafb;
+}
