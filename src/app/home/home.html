@@ -1,9 +1,96 @@
-<div>
-    <p>home works!</p>
+<!-- src/app/home/home.component.html -->
+<div class="home">
+  <section class="home__header">
+    <h1 class="home__title">
+      Showtimes in
+      <span class="home__city">{{ city }}</span>
+    </h1>
+    <p class="home__subtitle">
+      Select a showtime to reserve your seats. Mobile tickets are supported in all DreamCinema
+      locations.
+    </p>
+  </section>
+
+  <section class="home__hero">
+    <div class="hero-poster">
+      <!-- Make sure this image exists in src/assets -->
+      <img src="imgs/inception_movie_poster_banner_01.jpg" alt="Inception poster" />
+
+      <div class="poster-footer">
+        <div class="poster-meta">
+          <div class="poster-title">Inception</div>
+          <div>Rated 11 • 2h 28m • Sci-Fi, Thriller</div>
+        </div>
+        <button class="btn-primary">20:00 – Book</button>
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <h2>Tonight’s highlight</h2>
+      <p>
+        Experience Christopher Nolan’s mind-bending sci-fi thriller with immersive sound and
+        crystal-clear projection. Only at DreamCinema.
+      </p>
+      <ul>
+        <li>Reclining seats in all auditoriums</li>
+        <li>Dolby Atmos in selected halls</li>
+        <li>Fresh popcorn and barista coffee</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="home__movies">
+    <h2 class="section-title">Other movies showing today</h2>
+
+    <div class="movie-grid">
+      <article class="movie-card">
+        <div class="movie-card__poster">
+          <img src="imgs/inception_movie_poster_banner_01.jpg" alt="Inception" />
+        </div>
+        <div class="movie-card__body">
+          <h3 class="movie-card__title">Inception</h3>
+          <p class="movie-card__meta">Sci-Fi • 2h 28m • Original language</p>
+          <div class="showtimes">
+            <span class="time-pill">16:00</span>
+            <span class="time-pill">18:30</span>
+            <span class="time-pill">20:00</span>
+            <span class="time-pill">22:15</span>
+          </div>
+          <button class="btn-secondary">View seats</button>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="movie-card__poster">
+          <img src="https://via.placeholder.com/500x750?text=Movie+Poster" alt="Movie" />
+        </div>
+        <div class="movie-card__body">
+          <h3 class="movie-card__title">Midnight Skyline</h3>
+          <p class="movie-card__meta">Action • 1h 54m • Danish dub</p>
+          <div class="showtimes">
+            <span class="time-pill">15:45</span>
+            <span class="time-pill">19:10</span>
+            <span class="time-pill">21:40</span>
+          </div>
+          <button class="btn-secondary">View seats</button>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="movie-card__poster">
+          <img src="https://via.placeholder.com/500x750?text=Movie+Poster" alt="Movie" />
+        </div>
+        <div class="movie-card__body">
+          <h3 class="movie-card__title">Ocean of Stars</h3>
+          <p class="movie-card__meta">Drama • 2h 5m</p>
+          <div class="showtimes">
+            <span class="time-pill">14:15</span>
+            <span class="time-pill">17:00</span>
+            <span class="time-pill">20:30</span>
+          </div>
+          <button class="btn-secondary">View seats</button>
+        </div>
+      </article>
+    </div>
+  </section>
 </div>
-    
-
-
-
-
-

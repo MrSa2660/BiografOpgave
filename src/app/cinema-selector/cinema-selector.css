@@ -1,11 +1,11 @@
 .cinema-selector {
-  height: 100vh;              
-  padding: 3rem 1.5rem 2rem;  
-  box-sizing: border-box;     
-  overflow: hidden;           
+  height: 100vh;
+  padding: 3rem 1.5rem 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
   background: #08152a;
   color: #ffffff;
-  font-family: "Georgia", "Times New Roman", serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   display: flex;
   flex-direction: column;
   align-items: center;

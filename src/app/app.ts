@@ -6,7 +6,6 @@ import { CinemaSelector } from './cinema-selector/cinema-selector';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
