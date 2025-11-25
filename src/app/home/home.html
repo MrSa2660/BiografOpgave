@@ -1,35 +1,45 @@
 <!-- src/app/home/home.component.html -->
-<div class="home">
+<div class="home" *ngIf="city">
   <section class="home__header">
     <h1 class="home__title">
       Showtimes in
       <span class="home__city">{{ city }}</span>
     </h1>
     <p class="home__subtitle">
-      Select a showtime to reserve your seats. Mobile tickets are supported in all DreamCinema
-      locations.
+      Select a showtime to reserve your seats. Mobile tickets are supported in
+      all DreamCinema locations.
     </p>
   </section>
 
-  <section class="home__hero">
+  <!-- HERO / HIGHLIGHT MOVIE -->
+  <section class="home__hero" *ngIf="highlightMovie">
     <div class="hero-poster">
-      <!-- Make sure this image exists in src/assets -->
-      <img src="imgs/inception_movie_poster_banner_01.jpg" alt="Inception poster" />
+      <img
+        [src]="highlightMovie.posterUrl"
+        [alt]="highlightMovie.title + ' poster'"
+      />
 
       <div class="poster-footer">
         <div class="poster-meta">
-          <div class="poster-title">Inception</div>
-          <div>Rated 11 • 2h 28m • Sci-Fi, Thriller</div>
+          <div class="poster-title">{{ highlightMovie.title }}</div>
+          <div>
+            Rated {{ highlightMovie.rating }} •
+            {{ highlightMovie.durationMinutes }} min •
+            {{ highlightMovie.genres.join(', ') }}
+          </div>
         </div>
-        <button class="btn-primary">20:00 – Book</button>
+        <button class="btn-primary">
+          {{ highlightMovie.showtimes[0] || '20:00' }} – Book
+        </button>
       </div>
     </div>
 
     <div class="hero-text">
       <h2>Tonight’s highlight</h2>
       <p>
-        Experience Christopher Nolan’s mind-bending sci-fi thriller with immersive sound and
-        crystal-clear projection. Only at DreamCinema.
+        Enjoy <strong>{{ highlightMovie.title }}</strong> in
+        {{ city }} on the big screen with immersive sound and
+        ultra-clear projection.
       </p>
       <ul>
         <li>Reclining seats in all auditoriums</li>
@@ -39,58 +49,41 @@
     </div>
   </section>
 
-  <section class="home__movies">
+  <!-- OTHER MOVIES -->
+  <section class="home__movies" *ngIf="movies.length">
     <h2 class="section-title">Other movies showing today</h2>
 
     <div class="movie-grid">
-      <article class="movie-card">
+      <article class="movie-card" *ngFor="let movie of movies">
         <div class="movie-card__poster">
-          <img src="imgs/inception_movie_poster_banner_01.jpg" alt="Inception" />
+          <img
+            [src]="movie.posterUrl"
+            [alt]="movie.title + ' poster'"
+          />
         </div>
         <div class="movie-card__body">
-          <h3 class="movie-card__title">Inception</h3>
-          <p class="movie-card__meta">Sci-Fi • 2h 28m • Original language</p>
+          <h3 class="movie-card__title">{{ movie.title }}</h3>
+          <p class="movie-card__meta">
+            {{ movie.genres.join(', ') }} •
+            {{ movie.durationMinutes }} min •
+            {{ movie.language }}
+          </p>
           <div class="showtimes">
-            <span class="time-pill">16:00</span>
-            <span class="time-pill">18:30</span>
-            <span class="time-pill">20:00</span>
-            <span class="time-pill">22:15</span>
-          </div>
-          <button class="btn-secondary">View seats</button>
-        </div>
-      </article>
-
-      <article class="movie-card">
-        <div class="movie-card__poster">
-          <img src="https://via.placeholder.com/500x750?text=Movie+Poster" alt="Movie" />
-        </div>
-        <div class="movie-card__body">
-          <h3 class="movie-card__title">Midnight Skyline</h3>
-          <p class="movie-card__meta">Action • 1h 54m • Danish dub</p>
-          <div class="showtimes">
-            <span class="time-pill">15:45</span>
-            <span class="time-pill">19:10</span>
-            <span class="time-pill">21:40</span>
-          </div>
-          <button class="btn-secondary">View seats</button>
-        </div>
-      </article>
-
-      <article class="movie-card">
-        <div class="movie-card__poster">
-          <img src="https://via.placeholder.com/500x750?text=Movie+Poster" alt="Movie" />
-        </div>
-        <div class="movie-card__body">
-          <h3 class="movie-card__title">Ocean of Stars</h3>
-          <p class="movie-card__meta">Drama • 2h 5m</p>
-          <div class="showtimes">
-            <span class="time-pill">14:15</span>
-            <span class="time-pill">17:00</span>
-            <span class="time-pill">20:30</span>
+            <span
+              class="time-pill"
+              *ngFor="let time of movie.showtimes"
+            >
+              {{ time }}
+            </span>
           </div>
           <button class="btn-secondary">View seats</button>
         </div>
       </article>
     </div>
+  </section>
+
+  <!-- If no movies found -->
+  <section class="home__movies" *ngIf="!movies.length && !highlightMovie">
+    <p>No showtimes found for {{ city }} today.</p>
   </section>
 </div>

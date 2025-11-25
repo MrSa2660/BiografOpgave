@@ -2,6 +2,8 @@
 :host {
   display: block;
   background-color: #1e293b;
+  width: auto;
+  min-height: 95vh;
 }
 
 .home {
@@ -50,6 +52,7 @@
   display: block;
   width: 100%;
   height: auto;
+  max-height: 100vh;
 }
 
 .poster-footer {
