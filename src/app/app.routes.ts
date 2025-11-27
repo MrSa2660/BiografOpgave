@@ -3,7 +3,8 @@ import { Home } from './home/home';
 import { Login } from './login/login';
 import { CinemaSelector } from './cinema-selector/cinema-selector';
 import { TopNavbar } from './components/top-navbar/top-navbar';
-
+import { SignUp } from './sign-up/sign-up';
+import { Component } from '@angular/core';
 export const routes: Routes = [
   {
     path: '',
@@ -17,16 +18,28 @@ export const routes: Routes = [
     title: 'Select Cinema',
   },
 
-  // pages WITH top nav
   {
     path: '',
     component: TopNavbar,
     children: [
       { path: 'home/:city', component: Home, title: 'Home Page' },
       { path: 'login', component: Login, title: 'Login Page' },
+      { path: 'sign-up', component: SignUp, title: 'Sign up' },
     ],
   },
 
+  {
+    path: 'sign-up',
+    component: SignUp,
+    title: 'Sign up'
+  },
+
+  {
+    path: 'login',
+    component: Login,
+    title: 'Login Page'
+  },
+  
   // wildcard
   {
     path: '**',
