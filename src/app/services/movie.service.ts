@@ -6,41 +6,44 @@ import { Movie } from '../models/movie.model';
 })
 export class MovieService {
   private movies: Movie[] = [
-  {
-    id: 1,
-    title: 'Inception',
-    durationMinutes: 148,
-    genres: ['Sci-Fi', 'Thriller'],
-    rating: '11',
-    language: 'Original',
-    posterUrl: 'https://static0.moviewebimages.com/wordpress/wp-content/uploads/photo/9cBdpCabY7vdEi5ulBAe9CMcp9ttIv.jpg',
-    showtimes: ['16:00', '18:30', '20:00', '22:15'],
-    cities: ['København', 'Aarhus', 'Fyn'],
-    isHighlight: true,
-  },
-  {
-    id: 2,
-    title: 'Interstellar',
-    durationMinutes: 169,
-    genres: ['Sci-Fi', 'Drama'],
-    rating: '11',
-    language: 'Original',
-    posterUrl: 'https://external-preview.redd.it/VnuONXAMolp-S45sBs2XnPeUbuW_-TrgyGzSsmovq2g.jpg?auto=webp&s=e7be46f8ff9ffb2ca148d3627f6b7772aadd3e3e',
-    showtimes: ['15:45', '19:10', '21:40'],
-    cities: ['København', 'Aalborg'],
-  },
-  {
-    id: 3,
-    title: 'The Batman',
-    durationMinutes: 176,
-    genres: ['Action', 'Crime'],
-    rating: '15',
-    language: 'Original',
-    posterUrl: 'https://static.posters.cz/image/hp/66923.jpg',
-    showtimes: ['14:15', '17:00', '20:30'],
-    cities: ['Aarhus', 'Fyn', 'København'],
-  },
-];
+    {
+      id: 1,
+      title: 'Inception',
+      durationMinutes: 148,
+      genres: ['Sci-Fi', 'Thriller'],
+      rating: '11',
+      language: 'Original',
+      posterUrl: 'https://static0.moviewebimages.com/wordpress/wp-content/uploads/photo/9cBdpCabY7vdEi5ulBAe9CMcp9ttIv.jpg',
+      showtimes: ['16:00', '18:30', '20:00', '22:15'],
+      cities: ['København', 'Aarhus', 'Fyn'],
+      isHighlight: true,
+    },
+    {
+      id: 2,
+      title: 'Interstellar',
+      durationMinutes: 169,
+      genres: ['Sci-Fi', 'Drama'],
+      rating: '11',
+      language: 'Original',
+      posterUrl: 'https://external-preview.redd.it/VnuONXAMolp-S45sBs2XnPeUbuW_-TrgyGzSsmovq2g.jpg?auto=webp&s=e7be46f8ff9ffb2ca148d3627f6b7772aadd3e3e',
+      showtimes: ['15:45', '19:10', '21:40'],
+      cities: ['København', 'Aalborg'],
+    },
+    {
+      id: 3,
+      title: 'The Batman',
+      durationMinutes: 176,
+      genres: ['Action', 'Crime'],
+      rating: '15',
+      language: 'Original',
+      posterUrl: 'https://static.posters.cz/image/hp/66923.jpg',
+      showtimes: ['14:15', '17:00', '20:30'],
+      cities: ['Aarhus', 'Fyn', 'København'],
+    },
+  ];
+
+  // ny id-counter til nye film
+  private nextId = 4;
 
   constructor() {}
 
@@ -68,8 +71,14 @@ export class MovieService {
     return highlight ?? moviesInCity[0];
   }
 
-  
+  /** Admin: add a new movie */
+  addMovie(movieData: Omit<Movie, 'id'>): Movie {
+    const movie: Movie = {
+      ...movieData,
+      id: this.nextId++,
+    };
 
-  
-  
+    this.movies.push(movie);
+    return movie;
+  }
 }
