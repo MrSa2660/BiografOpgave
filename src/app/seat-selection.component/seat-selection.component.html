@@ -1,0 +1,17 @@
+<div class="seat-page" *ngIf="showtime">
+  <h1>Vælg sæder</h1>
+  <p>
+    {{ showtime.cinemaName }} – {{ showtime.hall }}<br />
+    {{ showtime.date | date : 'fullDate' }} kl. {{ showtime.time }}
+  </p>
+
+  <div class="screen">Lærred</div>
+
+  <div class="seats-grid">
+    <div class="seat" *ngFor="let i of [].constructor(60); let idx = index">
+      {{ idx + 1 }}
+    </div>
+  </div>
+
+  <button class="btn-primary">Fortsæt til betaling</button>
+</div>

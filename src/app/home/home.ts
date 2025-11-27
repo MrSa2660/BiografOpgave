@@ -1,16 +1,14 @@
 // src/app/home/home.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { Movie } from '../models/movie.model';
-
-
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
@@ -19,10 +17,7 @@ export class Home implements OnInit {
   highlightMovie: Movie | null = null;
   movies: Movie[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private movieService: MovieService
-  ) {}
+  constructor(private route: ActivatedRoute, private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -34,9 +29,7 @@ export class Home implements OnInit {
 
       // Optionally, don't show the highlight movie again in the list
       if (this.highlightMovie) {
-        this.movies = this.movies.filter(
-          (m) => m.id !== this.highlightMovie!.id
-        );
+        this.movies = this.movies.filter((m) => m.id !== this.highlightMovie!.id);
       }
     });
   }

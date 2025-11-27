@@ -4,8 +4,10 @@ import { Login } from './login/login';
 import { CinemaSelector } from './cinema-selector/cinema-selector';
 import { TopNavbar } from './components/top-navbar/top-navbar';
 import { SignUp } from './sign-up/sign-up';
-import { Component } from '@angular/core';
 import { Admin } from './admin/admin';
+import { MovieDetailComponent } from './movie-detail.component/movie-detail.component';
+import { SeatSelectionComponent } from './seat-selection.component/seat-selection.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -26,22 +28,24 @@ export const routes: Routes = [
       { path: 'home/:city', component: Home, title: 'Home Page' },
       { path: 'login', component: Login, title: 'Login Page' },
       { path: 'sign-up', component: SignUp, title: 'Sign up' },
-      { path: 'admin', component: Admin, title: 'Admin' },   // <-- ny
+      { path: 'admin', component: Admin, title: 'Admin' }, // <-- ny
+      { path: 'movie/:id/:city', component: MovieDetailComponent },
+      { path: 'seats/:showtimeId', component: SeatSelectionComponent },
     ],
   },
 
   {
     path: 'sign-up',
     component: SignUp,
-    title: 'Sign up'
+    title: 'Sign up',
   },
 
   {
     path: 'login',
     component: Login,
-    title: 'Login Page'
+    title: 'Login Page',
   },
-  
+
   // wildcard
   {
     path: '**',

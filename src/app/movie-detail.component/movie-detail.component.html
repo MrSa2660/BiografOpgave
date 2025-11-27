@@ -1,0 +1,84 @@
+<div class="movie-detail" *ngIf="movie">
+  <!-- HERO SECTION -->
+  <section class="movie-hero">
+    <div class="poster-wrapper">
+      <img [src]="movie.posterUrl" [alt]="movie.title + ' poster'" />
+    </div>
+
+    <div class="hero-info">
+      <h1 class="movie-title">{{ movie.title }}</h1>
+
+      <p class="movie-city" *ngIf="city">
+        Du har valgt <strong>{{ city }}</strong>
+      </p>
+
+      <div class="hero-meta">
+        <div>
+          <span class="meta-label">Aldersgrænse:</span>
+          <span class="meta-value">Tilladt for børn over {{ movie.rating }} år</span>
+        </div>
+        <div>
+          <span class="meta-label">Filmlængde:</span>
+          <span class="meta-value"> {{ movie.durationMinutes | number : '1.0-0' }} min </span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="#showtimes">Se tider</a>
+        <button class="btn-secondary-outline">Tilføj til watchlist</button>
+      </div>
+
+      <p class="hero-description">
+        I filmen <strong>{{ movie.title }}</strong> kan du opleve {{ movie.genres.join(', ') }}
+        på det store lærred. Beskrivelsen kan du selv skrive eller hente senere – dette er bare
+        dummytekst til layout.
+      </p>
+    </div>
+  </section>
+
+  <!-- SHOWTIMES SECTION -->
+  <section class="showtimes" id="showtimes" *ngIf="showtimesByCinema.length">
+    <header class="showtimes-header">
+      <h2>Planlæg dit biografbesøg i {{ city }}</h2>
+      <p>Vælg biograf, dag og version – klik på en tid for at vælge sæder.</p>
+    </header>
+
+    <div class="legend">
+      <span class="dot dot-high"></span> Ledige sæder 20–100%
+      <span class="dot dot-medium"></span> 10–20% <span class="dot dot-low"></span> 1–10%
+      <span class="dot dot-sold"></span> Udsoldt
+    </div>
+
+    <div class="cinema-list">
+      <article class="cinema-block" *ngFor="let group of showtimesByCinema">
+        <div class="cinema-info">
+          <h3>{{ group.cinemaName }}</h3>
+          <p class="cinema-city">{{ city }}</p>
+          <a href="#" class="cinema-link">Biograf info</a>
+        </div>
+
+        <div class="showtime-grid">
+          <div
+            class="showtime-tile"
+            *ngFor="let s of group.showtimes"
+            [ngClass]="{
+              'availability-high': s.availability === 'HIGH',
+              'availability-medium': s.availability === 'MEDIUM',
+              'availability-low': s.availability === 'LOW',
+              'availability-sold': s.availability === 'SOLD_OUT'
+            }"
+            [routerLink]="['/seats', s.id]"
+          >
+            <div class="tile-date">
+              {{ formatDate(s.date) }}
+            </div>
+            <div class="tile-time">
+              {{ s.time }}
+            </div>
+            <div class="tile-meta">{{ s.hall }} • {{ s.format }}</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
