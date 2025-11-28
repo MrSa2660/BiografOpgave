@@ -12,20 +12,24 @@ import { Movie } from '../models/movie.model';
   templateUrl: './admin.html',
   styleUrls: ['./admin.css'],
 })
-export class Admin {
-  // simple form-model
+  export class Admin {
+    // Selected city for the new movie
   city: string = 'København';
+
+  // Form fields
   title: string = '';
   posterUrl: string = '';
   rating: string = '';
   durationMinutes: number | null = null;
-  genresText: string = '';      // f.eks. "Action, Sci-Fi"
+  genresText: string = '';          // e.g. "Action, Sci-Fi"
   language: string = 'English';
-  showtimesText: string = '';   // f.eks. "18:30, 21:00"
-  makeHighlight: boolean = false;
+  showtimesText: string = '';       // e.g. "18:30, 21:00"
+  makeHighlight: boolean = false;   // mark as highlight movie
 
+  // Feedback message shown in UI
   message: string | null = null;
 
+  // Dropdown list of available cities
   cities = [
     'København',
     'Stor København',
@@ -37,46 +41,52 @@ export class Admin {
 
   constructor(private movieService: MovieService) {}
 
+  /** Validates input, builds movie object, and adds it to the service */
   addMovie() {
-  if (!this.title || !this.posterUrl) {
-    this.message = 'Title and poster URL are required.';
-    return;
+    // Check required fields
+    if (!this.title || !this.posterUrl) {
+      this.message = 'Title and poster URL are required.';
+      return;
+    }
+
+    // Convert comma-separated text to arrays
+    const genres = this.genresText
+      .split(',')
+      .map((g) => g.trim())
+      .filter((g) => g);
+
+    const showtimes = this.showtimesText
+      .split(',')
+      .map((t) => t.trim())
+      .filter((t) => t);
+
+      // Build a movie object without the ID (service generates it)
+    const movieData: Omit<Movie, 'id'> = {
+      title: this.title,                     // movie title from form
+      posterUrl: this.posterUrl,             // poster image URL
+      rating: this.rating || 'PG',           // fallback rating if empty
+      durationMinutes: this.durationMinutes ?? 120,  // default to 120 min
+      genres,                                // genre list from input text
+      showtimes,                             // showtimes list from input text
+      language: this.language || 'English',  // movie language
+      cities: [this.city],                   // selected city (as array)
+      isHighlight: this.makeHighlight,       // mark as highlight movie
+    };
+
+    // Save movie using service
+    this.movieService.addMovie(movieData);
+
+    // Show success message
+    this.message = `Movie "${this.title}" added for ${this.city}.`;
+
+    // Reset form fields
+    this.title = '';
+    this.posterUrl = '';
+    this.rating = '';
+    this.durationMinutes = null;
+    this.genresText = '';
+    this.language = 'English';
+    this.showtimesText = '';
+    this.makeHighlight = false;
   }
-
-  const genres = this.genresText
-    .split(',')
-    .map((g) => g.trim())
-    .filter((g) => g);
-
-  const showtimes = this.showtimesText
-    .split(',')
-    .map((t) => t.trim())
-    .filter((t) => t);
-
-  const movieData: Omit<Movie, 'id'> = {
-    title: this.title,
-    posterUrl: this.posterUrl,
-    rating: this.rating || 'PG',
-    durationMinutes: this.durationMinutes ?? 120,
-    genres,
-    showtimes,
-    language: this.language || 'English',
-    cities: [this.city],           // 👈 VIGTIGT: Movie kræver cities: string[]
-    isHighlight: this.makeHighlight, // 👈 hvis din Movie-model har isHighlight
-  };
-
-  this.movieService.addMovie(movieData); // 👈 kun 1 argument nu
-
-  this.message = `Movie "${this.title}" added for ${this.city}.`;
-
-  // reset felter
-  this.title = '';
-  this.posterUrl = '';
-  this.rating = '';
-  this.durationMinutes = null;
-  this.genresText = '';
-  this.language = 'English';
-  this.showtimesText = '';
-  this.makeHighlight = false;
-}
 }

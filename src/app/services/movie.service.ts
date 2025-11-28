@@ -140,54 +140,49 @@ export class MovieService {
     },
   ];
 
-  // ny id-counter til nye film
+// ID counter for newly added movies
   private nextId = 4;
 
-  constructor() {}
-
-  /** All movies (regardless of city) */
+  /** Returns all movies */
   getAllMovies(): Movie[] {
     return this.movies;
   }
 
-  /** Movies available in a specific city (case-sensitive match for now) */
+  /** Returns movies available in a given city */
   getMoviesByCity(city: string | null): Movie[] {
-    if (!city) {
-      return this.movies;
-    }
+    if (!city) return this.movies;
     return this.movies.filter((m) => m.cities.includes(city));
   }
 
-  /** One highlighted movie per city (fallback to any highlight, then first movie) */
+  /** Returns the highlighted movie for a city (fallback to first movie) */
   getHighlightForCity(city: string | null): Movie | null {
     const moviesInCity = this.getMoviesByCity(city);
-    if (!moviesInCity.length) {
-      return null;
-    }
+    if (!moviesInCity.length) return null;
 
     const highlight = moviesInCity.find((m) => m.isHighlight);
     return highlight ?? moviesInCity[0];
   }
 
+  /** Returns a movie by its ID */
   getMovieById(id: number): Movie | undefined {
     return this.movies.find((m) => m.id === id);
   }
 
+  /** Returns showtimes for a movie filtered by city */
   getShowtimesForMovieInCity(movieId: number, city: string | null): Showtime[] {
-    return this.showtimes.filter((s) => s.movieId === movieId && (!city || s.city === city));
+    return this.showtimes.filter(
+      (s) => s.movieId === movieId && (!city || s.city === city)
+    );
   }
 
+  /** Returns a single showtime by ID */
   getShowtimeById(id: number): Showtime | undefined {
     return this.showtimes.find((s) => s.id === id);
   }
 
-  /** Admin: add a new movie */
+  /** Adds a new movie and assigns it a unique ID */
   addMovie(movieData: Omit<Movie, 'id'>): Movie {
-    const movie: Movie = {
-      ...movieData,
-      id: this.nextId++,
-    };
-
+    const movie: Movie = { ...movieData, id: this.nextId++ };
     this.movies.push(movie);
     return movie;
   }
