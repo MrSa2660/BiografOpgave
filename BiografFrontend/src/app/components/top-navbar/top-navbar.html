@@ -1,0 +1,30 @@
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav" routerLinkActive="active">
+      <!-- Home: go to /app/home/<city>. If none selected yet, use a default or disable -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/home', selectedCity || 'København']"
+          [class.disabled]="!selectedCity"
+        >
+          Home
+        </a>
+      </li>
+
+      <!-- Login: inside the app shell -->
+      <li class="nav-item" style="float: right">
+        <a class="nav-link" [routerLink]="['/login']">login</a>
+      </li>
+
+      <!-- Link back to selector, showing selected city in the text -->
+      <li class="nav-item" style="float: right">
+        <a class="nav-link" [routerLink]="['/cinema-selector']">
+          {{ selectedCity || 'Choose cinema' }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
