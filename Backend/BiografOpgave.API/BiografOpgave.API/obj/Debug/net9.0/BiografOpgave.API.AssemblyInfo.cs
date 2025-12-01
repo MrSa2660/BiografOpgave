@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BiografOpgave.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45522aa6616d64aadbe4a81ad67d8a36d3de4602")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cd84ef15001e9b38289e7f4ad1c626080c2e426")]
 [assembly: System.Reflection.AssemblyProductAttribute("BiografOpgave.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BiografOpgave.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
