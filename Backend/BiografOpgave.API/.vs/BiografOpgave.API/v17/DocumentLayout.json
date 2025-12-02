@@ -1,42 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\",
+  "WorkspaceRootPath": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F5A2F50C-ABA6-4566-941C-C0F908BA2507}|BiografOpgave.API\\BiografOpgave.API.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F5A2F50C-ABA6-4566-941C-C0F908BA2507}|BiografOpgave.API\\BiografOpgave.API.csproj|solutionrelative:biografopgave.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.infrastructure\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|solutionrelative:biografopgave.infrastructure\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.infrastructure\\biografopgave.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|solutionrelative:biografopgave.infrastructure\\biografopgave.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.domain\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|c:\\users\\bruger\\documents\\github\\biografopgave\\backend\\biografopgave.api\\biografopgave.domain\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|solutionrelative:biografopgave.domain\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|c:\\users\\bruger\\documents\\github\\biografopgave\\backend\\biografopgave.api\\biografopgave.infrastructure\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|solutionrelative:biografopgave.infrastructure\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5A2F50C-ABA6-4566-941C-C0F908BA2507}|BiografOpgave.API\\BiografOpgave.API.csproj|c:\\users\\bruger\\documents\\github\\biografopgave\\backend\\biografopgave.api\\biografopgave.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5A2F50C-ABA6-4566-941C-C0F908BA2507}|BiografOpgave.API\\BiografOpgave.API.csproj|solutionrelative:biografopgave.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|c:\\users\\bruger\\documents\\github\\biografopgave\\backend\\biografopgave.api\\biografopgave.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|solutionrelative:biografopgave.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|c:\\users\\bruger\\documents\\github\\biografopgave\\backend\\biografopgave.api\\biografopgave.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|solutionrelative:biografopgave.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.domain\\biografopgave.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{FA92BE14-387F-4BC5-B0A2-5E2472885C1C}|BiografOpgave.Domain\\BiografOpgave.Domain.csproj|solutionrelative:biografopgave.domain\\biografopgave.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9DD0590-387B-4D80-AEA2-79F32E17042E}|BiografOpgave.Application\\BiografOpgave.Application.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9DD0590-387B-4D80-AEA2-79F32E17042E}|BiografOpgave.Application\\BiografOpgave.Application.csproj|c:\\users\\bruger\\documents\\github\\biografopgave\\backend\\biografopgave.api\\biografopgave.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9DD0590-387B-4D80-AEA2-79F32E17042E}|BiografOpgave.Application\\BiografOpgave.Application.csproj|solutionrelative:biografopgave.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FBFBE116-5C73-4343-A8B1-9192298F6332}|BiografOpgave.Test\\BiografOpgave.Test.csproj|c:\\users\\futon\\desktop\\angluar\\webrepos\\biografopgave\\backend\\biografopgave.api\\biografopgave.test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBFBE116-5C73-4343-A8B1-9192298F6332}|BiografOpgave.Test\\BiografOpgave.Test.csproj|solutionrelative:biografopgave.test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|c:\\users\\bruger\\documents\\github\\biografopgave\\backend\\biografopgave.api\\biografopgave.infrastructure\\biografopgave.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9ED762C4-ECA0-4EC1-A48D-1C71B93F4B93}|BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj|solutionrelative:biografopgave.infrastructure\\biografopgave.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.API\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.API\\Program.cs",
               "RelativeDocumentMoniker": "BiografOpgave.API\\Program.cs",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.API\\Program.cs",
               "RelativeToolTip": "BiografOpgave.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-01T11:55:17.651Z",
               "EditorCaption": ""
@@ -65,22 +57,22 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "DatabaseContext.cs",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\DatabaseContext.cs",
               "RelativeDocumentMoniker": "BiografOpgave.Infrastructure\\DatabaseContext.cs",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\DatabaseContext.cs",
+              "ToolTip": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\DatabaseContext.cs",
               "RelativeToolTip": "BiografOpgave.Infrastructure\\DatabaseContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-01T11:48:15.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BiografOpgave.Infrastructure",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj",
+              "DocumentIndex": 6,
+              "Title": "BiografOpgave.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj",
               "RelativeDocumentMoniker": "BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj",
               "RelativeToolTip": "BiografOpgave.Infrastructure\\BiografOpgave.Infrastructure.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -89,11 +81,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Person.cs",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Person.cs",
+              "DocumentMoniker": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Person.cs",
               "RelativeDocumentMoniker": "BiografOpgave.Domain\\Person.cs",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Person.cs",
+              "ToolTip": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Person.cs",
               "RelativeToolTip": "BiografOpgave.Domain\\Person.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -102,24 +94,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BiografOpgave.Domain",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\BiografOpgave.Domain.csproj",
-              "RelativeDocumentMoniker": "BiografOpgave.Domain\\BiografOpgave.Domain.csproj",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\BiografOpgave.Domain.csproj",
-              "RelativeToolTip": "BiografOpgave.Domain\\BiografOpgave.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-01T11:31:13.756Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Application\\Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Application\\Class1.cs",
               "RelativeDocumentMoniker": "BiografOpgave.Application\\Class1.cs",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Application\\Class1.cs",
+              "ToolTip": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Application\\Class1.cs",
               "RelativeToolTip": "BiografOpgave.Application\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -128,24 +107,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UnitTest1.cs",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\UnitTest1.cs",
-              "RelativeDocumentMoniker": "BiografOpgave.Test\\UnitTest1.cs",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\UnitTest1.cs",
-              "RelativeToolTip": "BiografOpgave.Test\\UnitTest1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T11:30:29.546Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\Class1.cs",
               "RelativeDocumentMoniker": "BiografOpgave.Infrastructure\\Class1.cs",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\Class1.cs",
+              "ToolTip": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Infrastructure\\Class1.cs",
               "RelativeToolTip": "BiografOpgave.Infrastructure\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -154,11 +120,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Class1.cs",
               "RelativeDocumentMoniker": "BiografOpgave.Domain\\Class1.cs",
-              "ToolTip": "C:\\Users\\Futon\\Desktop\\Angluar\\webrepos\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Class1.cs",
+              "ToolTip": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Domain\\Class1.cs",
               "RelativeToolTip": "BiografOpgave.Domain\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

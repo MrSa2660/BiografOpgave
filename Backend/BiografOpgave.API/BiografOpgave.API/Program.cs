@@ -2,8 +2,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 // Add services to the container.
-builder.Services.AddDbContext<BiografOpgave.Infrastructure.DatabaseContext>(options => options.UseSqlServer("connection to our database"));
+builder.Services.AddDbContext<BiografOpgave.Infrastructure.DatabaseContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
