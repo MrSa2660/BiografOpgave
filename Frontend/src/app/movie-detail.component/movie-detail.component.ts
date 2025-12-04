@@ -43,6 +43,14 @@ export class MovieDetailComponent implements OnInit {
     });
   }
 
+  scrollToShowtimes(event: Event) {
+    event.preventDefault(); // stop the router / navigation
+    const el = document.getElementById('showtimes');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   // used to build a nice date label: e.g. "Tor, 27/11"
   formatDate(dateStr: string): string {
     const d = new Date(dateStr);

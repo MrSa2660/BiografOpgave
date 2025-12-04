@@ -34,18 +34,6 @@ export const routes: Routes = [
     ],
   },
 
-  {
-    path: 'sign-up',
-    component: SignUp,
-    title: 'Sign up',
-  },
-
-  {
-    path: 'login',
-    component: Login,
-    title: 'Login Page',
-  },
-
   // wildcard
   {
     path: '**',
