@@ -943,24 +943,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bruger\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\MrSa2660\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\BiografOpgave.Test.csproj",
+      "projectUniqueName": "C:\\Users\\MrSa2660\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\BiografOpgave.Test.csproj",
       "projectName": "BiografOpgave.Test",
-      "projectPath": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\BiografOpgave.Test.csproj",
-      "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bruger\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\obj\\",
+      "projectPath": "C:\\Users\\MrSa2660\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\BiografOpgave.Test.csproj",
+      "packagesPath": "C:\\Users\\MrSa2660\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MrSa2660\\Documents\\GitHub\\BiografOpgave\\Backend\\BiografOpgave.API\\BiografOpgave.Test\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\MrSa2660\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
