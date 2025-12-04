@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BiografOpgave.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+072d7c6c862373788388718a6b1d44597f80d4a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9575507cd22749efd1f7ed2d17295e06c3357d59")]
 [assembly: System.Reflection.AssemblyProductAttribute("BiografOpgave.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BiografOpgave.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
