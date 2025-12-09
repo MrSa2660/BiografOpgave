@@ -13,9 +13,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.11.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BiografOpgave.Application\BiografOpgave.Application.csproj" />
+    <ProjectReference Include="..\BiografOpgave.Domain\BiografOpgave.Domain.csproj" />
     <ProjectReference Include="..\BiografOpgave.Infrastructure\BiografOpgave.Infrastructure.csproj" />
   </ItemGroup>
 

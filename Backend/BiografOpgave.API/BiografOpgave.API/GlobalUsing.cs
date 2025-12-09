@@ -1,2 +1,9 @@
 global using Microsoft.EntityFrameworkCore;
 global using BiografOpgave.Infrastructure;
+global using BiografOpgave.Infrastructure.Repositories;
+global using BiografOpgave.Domain.Models;
+global using BiografOpgave.Domain.Interfaces;
+global using Microsoft.AspNetCore.Mvc;
+global using BiografOpgave.Application.Interfaces;
+global using BiografOpgave.Application.Services;
+global using Scalar.AspNetCore;

@@ -1,3 +1,5 @@
+using BiografOpgave.Domain.Models;
+
 namespace BiografOpgave.Infrastructure
 {
   public class DatabaseContext : DbContext
@@ -5,8 +7,6 @@ namespace BiografOpgave.Infrastructure
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
         // højre are out tables presented as DBSet <T>
 
-        public DbSet<BiografOpgave.Domain.Person> Persons { get; set; }
-
-
+        public DbSet<Person> Persons { get; set; }
   }
 }

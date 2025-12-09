@@ -13,7 +13,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.11",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.11",
           "Microsoft.Extensions.Configuration": "10.0.0",
-          "Microsoft.Extensions.Configuration.Json": "10.0.0"
+          "Microsoft.Extensions.Configuration.Json": "10.0.0",
+          "Scalar.AspNetCore": "2.11.2"
         },
         "runtime": {
           "BiografOpgave.Infrastructure.dll": {}
@@ -815,6 +816,14 @@
           }
         }
       },
+      "Scalar.AspNetCore/2.11.2": {
+        "runtime": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "assemblyVersion": "2.11.2.0",
+            "fileVersion": "2.11.2.0"
+          }
+        }
+      },
       "System.ClientModel/1.0.0": {
         "dependencies": {
           "System.Memory.Data": "1.0.2",
@@ -1482,6 +1491,13 @@
       "sha512": "sha512-YqueG52R/Xej4VVbKuRIodjiAhV0HR/XVbLbNrJhCZnzjnSjgMJ/dCdV0akQQxavX6hp/LC6rqLGLcXeQYU7XA==",
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
+    },
+    "Scalar.AspNetCore/2.11.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XKTaBPzQVgXnP9XjHRMEqzY83J2xAq8vNBxCV5Ic0H+km0kr8bMbWX1xKepgTjXpfcPtOq6RP6fScIGESNjWcA==",
+      "path": "scalar.aspnetcore/2.11.2",
+      "hashPath": "scalar.aspnetcore.2.11.2.nupkg.sha512"
     },
     "System.ClientModel/1.0.0": {
       "type": "package",
