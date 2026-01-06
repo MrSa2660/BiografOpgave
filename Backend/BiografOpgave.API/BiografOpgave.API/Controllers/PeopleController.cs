@@ -14,6 +14,7 @@ public class PeopleController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<PersonDTOResponse>>> GetAll()
         => Ok(await _service.GetAll());
+        
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<PersonDTOResponse>> Get(int id)
@@ -27,7 +28,7 @@ public class PeopleController : ControllerBase
     public async Task<ActionResult<PersonDTOResponse>> Create(PersonDTORequest dto)
     {
         var created = await _service.Create(dto);
-        return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
+        return CreatedAtAction(nameof(Get), new { id = created?.Id }, created);
     }
 
     [HttpPut("{id:int}")]

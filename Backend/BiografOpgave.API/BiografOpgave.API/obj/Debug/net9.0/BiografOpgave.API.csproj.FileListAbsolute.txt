@@ -369,7 +369,6 @@ C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\Biogr
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\runtimes\win\lib\net9.0\System.Text.Encodings.Web.dll
-C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\BiografOpgave.Application.dll
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\BiografOpgave.Application.pdb
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\Scalar.AspNetCore.dll
