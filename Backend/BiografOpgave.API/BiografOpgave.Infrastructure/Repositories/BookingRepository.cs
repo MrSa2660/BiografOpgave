@@ -1,0 +1,51 @@
+namespace BiografOpgave.Infrastructure.Repositories;
+
+public class BookingRepository : IBookingRepository
+{
+    private readonly DatabaseContext _context;
+
+    public BookingRepository(DatabaseContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<IEnumerable<Booking>> GetAll()
+        => await _context.Bookings
+            .Include(b => b.Seats)
+            .Include(b => b.Tickets)
+            .AsNoTracking()
+            .ToListAsync();
+
+    public Task<Booking?> GetById(int id)
+        => _context.Bookings.FindAsync(id).AsTask();
+
+    public async Task<Booking?> GetDetailed(int id)
+        => await _context.Bookings
+            .Include(b => b.Seats)
+            .Include(b => b.Tickets)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(b => b.Id == id);
+
+    public async Task<Booking> Create(Booking booking)
+    {
+        _context.Bookings.Add(booking);
+        await _context.SaveChangesAsync();
+        return booking;
+    }
+
+    public async Task<Booking?> Update(Booking booking)
+    {
+        _context.Bookings.Update(booking);
+        await _context.SaveChangesAsync();
+        return booking;
+    }
+
+    public async Task<bool> Delete(int id)
+    {
+        var entity = await _context.Bookings.FindAsync(id);
+        if (entity == null) return false;
+        _context.Bookings.Remove(entity);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+}

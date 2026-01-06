@@ -6,4 +6,5 @@ global using BiografOpgave.Domain.Interfaces;
 global using Microsoft.AspNetCore.Mvc;
 global using BiografOpgave.Application.Interfaces;
 global using BiografOpgave.Application.Services;
+global using BiografOpgave.Application.DTOs;
 global using Scalar.AspNetCore;
