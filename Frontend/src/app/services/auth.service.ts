@@ -7,6 +7,12 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface SignupRequest {
+  email: string;
+  fullName: string;
+  password: string;
+}
+
 export interface UserResponse {
   id: number;
   email: string;
@@ -22,5 +28,9 @@ export class AuthService {
 
   login(request: LoginRequest): Observable<UserResponse> {
     return this.http.post<UserResponse>(`${this.baseUrl}/login`, request);
+  }
+
+  signup(request: SignupRequest): Observable<UserResponse> {
+    return this.http.post<UserResponse>(this.baseUrl, request);
   }
 }
