@@ -18,6 +18,19 @@ public class UserService : IUserService
     public async Task<UserDTOResponse?> GetByEmail(string email)
         => (await _users.GetByEmail(email)) is { } user ? ToDto(user) : null;
 
+    public async Task<UserDTOResponse?> Authenticate(string email, string password)
+    {
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            return null;
+
+        var user = await _users.GetByEmail(email);
+        if (user == null) return null;
+
+        return string.Equals(user.PasswordHash, password, StringComparison.Ordinal)
+            ? ToDto(user)
+            : null;
+    }
+
     public async Task<UserDTOResponse?> Create(UserDTORequest request)
     {
         if (string.IsNullOrWhiteSpace(request.Email) || string.IsNullOrWhiteSpace(request.FullName))
