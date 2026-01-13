@@ -74,19 +74,24 @@ import { Movie } from '../models/movie.model';
     };
 
     // Save movie using service
-    this.movieService.addMovie(movieData);
+    this.movieService.addMovie(movieData).subscribe({
+      next: () => {
+        // Show success message
+        this.message = `Movie "${this.title}" added for ${this.city}.`;
 
-    // Show success message
-    this.message = `Movie "${this.title}" added for ${this.city}.`;
-
-    // Reset form fields
-    this.title = '';
-    this.posterUrl = '';
-    this.rating = '';
-    this.durationMinutes = null;
-    this.genresText = '';
-    this.language = 'English';
-    this.showtimesText = '';
-    this.makeHighlight = false;
+        // Reset form fields
+        this.title = '';
+        this.posterUrl = '';
+        this.rating = '';
+        this.durationMinutes = null;
+        this.genresText = '';
+        this.language = 'English';
+        this.showtimesText = '';
+        this.makeHighlight = false;
+      },
+      error: () => {
+        this.message = 'Could not save the movie. Please try again.';
+      },
+    });
   }
 }

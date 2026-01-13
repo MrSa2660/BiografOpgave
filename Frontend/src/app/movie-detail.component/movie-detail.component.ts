@@ -25,7 +25,9 @@ export class MovieDetailComponent implements OnInit {
       const id = Number(params.get('id'));
       this.city = params.get('city');
 
-      this.movie = this.movieService.getMovieById(id);
+      this.movieService.getMovieById(id).subscribe((movie) => {
+        this.movie = movie;
+      });
       const all = this.movieService.getShowtimesForMovieInCity(id, this.city);
 
       // group by cinema like your screenshot
