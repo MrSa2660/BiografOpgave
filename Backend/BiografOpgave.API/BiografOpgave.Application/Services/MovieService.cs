@@ -38,6 +38,9 @@ public class MovieService : IMovieService
         existing.TrailerUrl = movie.TrailerUrl;
         existing.ReleaseDate = movie.ReleaseDate;
         existing.IsNowShowing = movie.IsNowShowing;
+        existing.CitiesCsv = movie.Cities;
+        existing.ShowtimesCsv = movie.Showtimes;
+        existing.IsHighlight = movie.IsHighlight;
 
         var updated = await _movies.Update(existing);
         return updated == null ? null : ToDto(updated);
@@ -57,7 +60,10 @@ public class MovieService : IMovieService
         PosterUrl = movie.PosterUrl,
         TrailerUrl = movie.TrailerUrl,
         ReleaseDate = movie.ReleaseDate,
-        IsNowShowing = movie.IsNowShowing
+        IsNowShowing = movie.IsNowShowing,
+        Cities = movie.CitiesCsv,
+        Showtimes = movie.ShowtimesCsv,
+        IsHighlight = movie.IsHighlight
     };
 
     private static Movie ToEntity(MovieDTORequest movie) => new()
@@ -72,6 +78,9 @@ public class MovieService : IMovieService
         PosterUrl = movie.PosterUrl,
         TrailerUrl = movie.TrailerUrl,
         ReleaseDate = movie.ReleaseDate,
-        IsNowShowing = movie.IsNowShowing
+        IsNowShowing = movie.IsNowShowing,
+        CitiesCsv = movie.Cities,
+        ShowtimesCsv = movie.Showtimes,
+        IsHighlight = movie.IsHighlight
     };
 }

@@ -1,49 +1,42 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 import { Movie } from '../models/movie.model';
 import { Showtime } from '../models/showtime.model';
+
+interface MovieApiResponse {
+  id: number;
+  title: string;
+  durationMinutes: number;
+  genre: string | null;
+  rating: string | null;
+  language: string | null;
+  posterUrl: string | null;
+  showtimes: string | null;
+  cities: string | null;
+  isHighlight: boolean;
+}
+
+interface MovieApiRequest {
+  id?: number;
+  title: string;
+  durationMinutes: number;
+  genre: string | null;
+  rating: string | null;
+  language: string | null;
+  posterUrl: string | null;
+  showtimes: string | null;
+  cities: string | null;
+  isHighlight: boolean;
+  isNowShowing: boolean;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
-  private movies: Movie[] = [
-    {
-      id: 1,
-      title: 'Inception',
-      durationMinutes: 148,
-      genres: ['Sci-Fi', 'Thriller'],
-      rating: '11',
-      language: 'Original',
-      posterUrl:
-        'https://static0.moviewebimages.com/wordpress/wp-content/uploads/photo/9cBdpCabY7vdEi5ulBAe9CMcp9ttIv.jpg',
-      showtimes: ['16:00', '18:30', '20:00', '22:15'],
-      cities: ['København', 'Aarhus', 'Fyn'],
-      isHighlight: true,
-    },
-    {
-      id: 2,
-      title: 'Interstellar',
-      durationMinutes: 169,
-      genres: ['Sci-Fi', 'Drama'],
-      rating: '11',
-      language: 'Original',
-      posterUrl:
-        'https://external-preview.redd.it/VnuONXAMolp-S45sBs2XnPeUbuW_-TrgyGzSsmovq2g.jpg?auto=webp&s=e7be46f8ff9ffb2ca148d3627f6b7772aadd3e3e',
-      showtimes: ['15:45', '19:10', '21:40'],
-      cities: ['København', 'Aalborg'],
-    },
-    {
-      id: 3,
-      title: 'The Batman',
-      durationMinutes: 176,
-      genres: ['Action', 'Crime'],
-      rating: '15',
-      language: 'Original',
-      posterUrl: 'https://static.posters.cz/image/hp/66923.jpg',
-      showtimes: ['14:15', '17:00', '20:30'],
-      cities: ['Aarhus', 'Fyn', 'København'],
-    },
-  ];
+  private http = inject(HttpClient);
+  private baseUrl = 'http://localhost:5104/api/movies';
   private showtimes: Showtime[] = [
     // Lyngby Kinopalæet – Inception
     {
@@ -140,32 +133,38 @@ export class MovieService {
     },
   ];
 
-// ID counter for newly added movies
-  private nextId = 4;
-
   /** Returns all movies */
-  getAllMovies(): Movie[] {
-    return this.movies;
+  getAllMovies(): Observable<Movie[]> {
+    return this.http.get<MovieApiResponse[]>(this.baseUrl).pipe(
+      map((movies) => movies.map((movie) => this.toMovie(movie)))
+    );
   }
 
   /** Returns movies available in a given city */
-  getMoviesByCity(city: string | null): Movie[] {
-    if (!city) return this.movies;
-    return this.movies.filter((m) => m.cities.includes(city));
+  getMoviesByCity(city: string | null): Observable<Movie[]> {
+    return this.getAllMovies().pipe(
+      map((movies) =>
+        city ? movies.filter((movie) => movie.cities.includes(city)) : movies
+      )
+    );
   }
 
   /** Returns the highlighted movie for a city (fallback to first movie) */
-  getHighlightForCity(city: string | null): Movie | null {
-    const moviesInCity = this.getMoviesByCity(city);
-    if (!moviesInCity.length) return null;
-
-    const highlight = moviesInCity.find((m) => m.isHighlight);
-    return highlight ?? moviesInCity[0];
+  getHighlightForCity(city: string | null): Observable<Movie | null> {
+    return this.getMoviesByCity(city).pipe(
+      map((movies) => {
+        if (!movies.length) return null;
+        const highlight = movies.find((movie) => movie.isHighlight);
+        return highlight ?? movies[0];
+      })
+    );
   }
 
   /** Returns a movie by its ID */
-  getMovieById(id: number): Movie | undefined {
-    return this.movies.find((m) => m.id === id);
+  getMovieById(id: number): Observable<Movie | undefined> {
+    return this.http
+      .get<MovieApiResponse>(`${this.baseUrl}/${id}`)
+      .pipe(map((movie) => this.toMovie(movie)));
   }
 
   /** Returns showtimes for a movie filtered by city */
@@ -181,9 +180,45 @@ export class MovieService {
   }
 
   /** Adds a new movie and assigns it a unique ID */
-  addMovie(movieData: Omit<Movie, 'id'>): Movie {
-    const movie: Movie = { ...movieData, id: this.nextId++ };
-    this.movies.push(movie);
-    return movie;
+  addMovie(movieData: Omit<Movie, 'id'>): Observable<Movie> {
+    const payload: MovieApiRequest = {
+      title: movieData.title,
+      durationMinutes: movieData.durationMinutes,
+      genre: movieData.genres.join(', '),
+      rating: movieData.rating,
+      language: movieData.language,
+      posterUrl: movieData.posterUrl,
+      showtimes: movieData.showtimes.join(', '),
+      cities: movieData.cities.join(', '),
+      isHighlight: movieData.isHighlight ?? false,
+      isNowShowing: true,
+    };
+
+    return this.http
+      .post<MovieApiResponse>(this.baseUrl, payload)
+      .pipe(map((movie) => this.toMovie(movie)));
+  }
+
+  private toMovie(movie: MovieApiResponse): Movie {
+    return {
+      id: movie.id,
+      title: movie.title,
+      durationMinutes: movie.durationMinutes,
+      genres: this.splitCsv(movie.genre),
+      rating: movie.rating ?? '',
+      language: movie.language ?? '',
+      posterUrl: movie.posterUrl ?? '',
+      showtimes: this.splitCsv(movie.showtimes),
+      cities: this.splitCsv(movie.cities),
+      isHighlight: movie.isHighlight,
+    };
+  }
+
+  private splitCsv(value: string | null | undefined): string[] {
+    if (!value) return [];
+    return value
+      .split(',')
+      .map((item) => item.trim())
+      .filter((item) => item);
   }
 }

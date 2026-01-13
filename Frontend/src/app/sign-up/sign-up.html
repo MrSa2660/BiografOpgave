@@ -2,10 +2,29 @@
   <div class="signup-card">
     <h1 class="signup-title">Sign up</h1>
 
-    <form>
+    <form (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="fullName">Full name:</label>
+        <input
+          id="fullName"
+          type="text"
+          placeholder="Enter full name"
+          name="fullName"
+          [(ngModel)]="fullName"
+          required
+        />
+      </div>
+
       <div class="form-group">
         <label for="email">Email:</label>
-        <input id="email" type="email" placeholder="Enter email" />
+        <input
+          id="email"
+          type="email"
+          placeholder="Enter email"
+          name="email"
+          [(ngModel)]="email"
+          required
+        />
       </div>
 
       <div class="form-group">
@@ -14,6 +33,9 @@
           id="password"
           [type]="showPassword ? 'text' : 'password'"
           placeholder="Enter password"
+          name="password"
+          [(ngModel)]="password"
+          required
         />
       </div>
 
@@ -23,6 +45,9 @@
           id="confirmPassword"
           [type]="showPassword ? 'text' : 'password'"
           placeholder="Re-enter password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          required
         />
       </div>
 
@@ -35,10 +60,12 @@
         <label for="showPassword">Show Password</label>
       </div>
 
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
       <button
-        type="button"
+        type="submit"
         class="signup-button"
-        routerLink="/cinema-selector"
+        [disabled]="isSubmitting"
       >
         SIGN UP
       </button>

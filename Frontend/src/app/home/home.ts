@@ -22,15 +22,11 @@ export class Home implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.city = params.get('city');
-
-      // get data from the service, based on the city
-      this.highlightMovie = this.movieService.getHighlightForCity(this.city);
-      this.movies = this.movieService.getMoviesByCity(this.city);
-
-      // Optionally, don't show the highlight movie again in the list
-      if (this.highlightMovie) {
-        this.movies = this.movies.filter((m) => m.id !== this.highlightMovie!.id);
-      }
+      this.movieService.getMoviesByCity(this.city).subscribe((movies) => {
+        const highlight = movies.find((movie) => movie.isHighlight) ?? movies[0] ?? null;
+        this.highlightMovie = highlight;
+        this.movies = highlight ? movies.filter((movie) => movie.id !== highlight.id) : movies;
+      });
     });
   }
 }

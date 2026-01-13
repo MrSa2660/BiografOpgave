@@ -23,6 +23,14 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
+    [HttpPost("login")]
+    public async Task<ActionResult<UserDTOResponse>> Login(UserLoginRequest request)
+    {
+        var user = await _service.Authenticate(request.Email, request.Password);
+        if (user == null) return Unauthorized();
+        return Ok(user);
+    }
+
     [HttpPost]
     public async Task<ActionResult<UserDTOResponse>> Create(UserDTORequest dto)
     {

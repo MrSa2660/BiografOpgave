@@ -18,6 +18,20 @@ public class UserService : IUserService
     public async Task<UserDTOResponse?> GetByEmail(string email)
         => (await _users.GetByEmail(email)) is { } user ? ToDto(user) : null;
 
+    public async Task<UserDTOResponse?> Authenticate(string email, string password)
+    {
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            return null;
+
+        var user = await _users.GetByEmail(email);
+        if (user == null) return null;
+
+        var passwordHash = HashPassword(password);
+        return string.Equals(user.PasswordHash, passwordHash, StringComparison.Ordinal)
+            ? ToDto(user)
+            : null;
+    }
+
     public async Task<UserDTOResponse?> Create(UserDTORequest request)
     {
         if (string.IsNullOrWhiteSpace(request.Email) || string.IsNullOrWhiteSpace(request.FullName))
@@ -28,7 +42,7 @@ public class UserService : IUserService
             Email = request.Email,
             FullName = request.FullName,
             Role = request.Role,
-            PasswordHash = request.Password ?? string.Empty
+            PasswordHash = HashPassword(request.Password ?? string.Empty)
         };
 
         var created = await _users.Create(entity);
@@ -45,7 +59,7 @@ public class UserService : IUserService
         existing.Role = request.Role;
         if (!string.IsNullOrWhiteSpace(request.Password))
         {
-            existing.PasswordHash = request.Password;
+            existing.PasswordHash = HashPassword(request.Password);
         }
 
         var updated = await _users.Update(existing);
@@ -62,4 +76,11 @@ public class UserService : IUserService
         Role = user.Role,
         CreatedAt = user.CreatedAt
     };
+
+    private static string HashPassword(string password)
+    {
+        var bytes = System.Text.Encoding.UTF8.GetBytes(password);
+        var hash = System.Security.Cryptography.SHA256.HashData(bytes);
+        return Convert.ToHexString(hash);
+    }
 }
