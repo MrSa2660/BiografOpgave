@@ -5,7 +5,6 @@ public class DatabaseContext : DbContext
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
     // tables presented as DbSet<T>
-    public DbSet<Person> Persons { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Screen> Screens { get; set; }
