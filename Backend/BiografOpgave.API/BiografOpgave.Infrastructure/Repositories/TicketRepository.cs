@@ -15,6 +15,13 @@ public class TicketRepository : ITicketRepository
             .AsNoTracking()
             .ToListAsync();
 
+    public async Task<IEnumerable<Ticket>> GetForUser(int userId)
+        => await _context.Tickets
+            .Include(t => t.Booking)
+            .Where(t => t.Booking != null && t.Booking.UserId == userId)
+            .AsNoTracking()
+            .ToListAsync();
+
     public Task<Ticket?> GetById(int id)
         => _context.Tickets.FindAsync(id).AsTask();
 

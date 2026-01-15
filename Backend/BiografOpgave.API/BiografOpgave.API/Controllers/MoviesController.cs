@@ -24,6 +24,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpPost]
+    [AdminOnly]
     public async Task<ActionResult<MovieDTOResponse>> Create(MovieDTORequest dto)
     {
         var created = await _service.Create(dto);
@@ -32,6 +33,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [AdminOnly]
     public async Task<ActionResult<MovieDTOResponse>> Update(int id, MovieDTORequest dto)
     {
         if (id != dto.Id) return BadRequest();
@@ -41,6 +43,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [AdminOnly]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _service.Delete(id);

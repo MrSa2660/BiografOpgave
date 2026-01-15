@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Movie } from '../models/movie.model';
 import { Showtime } from '../models/showtime.model';
+import { AuthService } from './auth.service';
 
 interface MovieApiResponse {
   id: number;
@@ -36,9 +37,10 @@ interface MovieApiRequest {
 })
 export class MovieService {
   private http = inject(HttpClient);
+  private auth = inject(AuthService);
   private baseUrl = 'http://localhost:5104/api/movies';
   private showtimes: Showtime[] = [
-    // Lyngby Kinopalæet – Inception
+    // København
     {
       id: 101,
       movieId: 1,
@@ -72,8 +74,6 @@ export class MovieService {
       format: '2D, Eng. tale',
       availability: 'MEDIUM',
     },
-
-    // Waves – Inception
     {
       id: 201,
       movieId: 3,
@@ -96,8 +96,6 @@ export class MovieService {
       format: '2D, Eng. tale',
       availability: 'HIGH',
     },
-
-    // Palads – Inception
     {
       id: 301,
       movieId: 2,
@@ -131,6 +129,41 @@ export class MovieService {
       format: '2D, Eng. tale',
       availability: 'MEDIUM',
     },
+    // Aarhus
+    {
+      id: 401,
+      movieId: 1,
+      cinemaName: 'Bruuns Galleri',
+      city: 'Aarhus',
+      hall: 'Sal 4',
+      date: '2025-11-27',
+      time: '18.00',
+      format: '2D, Eng. tale',
+      availability: 'HIGH',
+    },
+    {
+      id: 402,
+      movieId: 2,
+      cinemaName: 'Bruuns Galleri',
+      city: 'Aarhus',
+      hall: 'Sal 1',
+      date: '2025-11-27',
+      time: '20.30',
+      format: '2D, Eng. tale',
+      availability: 'MEDIUM',
+    },
+    // Aalborg
+    {
+      id: 501,
+      movieId: 3,
+      cinemaName: 'Kennedy Arkaden',
+      city: 'Aalborg',
+      hall: 'Sal 2',
+      date: '2025-11-27',
+      time: '17.30',
+      format: '2D, Eng. tale',
+      availability: 'HIGH',
+    },
   ];
 
   /** Returns all movies */
@@ -143,9 +176,13 @@ export class MovieService {
   /** Returns movies available in a given city */
   getMoviesByCity(city: string | null): Observable<Movie[]> {
     return this.getAllMovies().pipe(
-      map((movies) =>
-        city ? movies.filter((movie) => movie.cities.includes(city)) : movies
-      )
+      map((movies) => {
+        const cityKey = this.normalizeCity(city);
+        if (!cityKey) return movies;
+        return movies.filter((movie) =>
+          (movie.cities || []).some((c) => this.normalizeCity(c) === cityKey)
+        );
+      })
     );
   }
 
@@ -169,9 +206,12 @@ export class MovieService {
 
   /** Returns showtimes for a movie filtered by city */
   getShowtimesForMovieInCity(movieId: number, city: string | null): Showtime[] {
-    return this.showtimes.filter(
-      (s) => s.movieId === movieId && (!city || s.city === city)
-    );
+    const cityKey = this.normalizeCity(city);
+    return this.showtimes.filter((s) => {
+      if (s.movieId !== movieId) return false;
+      if (!cityKey) return true;
+      return this.normalizeCity(s.city) === cityKey;
+    });
   }
 
   /** Returns a single showtime by ID */
@@ -195,7 +235,9 @@ export class MovieService {
     };
 
     return this.http
-      .post<MovieApiResponse>(this.baseUrl, payload)
+      .post<MovieApiResponse>(this.baseUrl, payload, {
+        headers: this.auth.authHeaders(true),
+      })
       .pipe(map((movie) => this.toMovie(movie)));
   }
 
@@ -220,5 +262,16 @@ export class MovieService {
       .split(',')
       .map((item) => item.trim())
       .filter((item) => item);
+  }
+
+  private normalizeCity(value: string | null | undefined): string {
+    if (!value) return '';
+    const cleaned = value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+    if (cleaned.includes('stor kobenhavn') || cleaned.includes('copenhagen')) return 'kobenhavn';
+    return cleaned;
   }
 }

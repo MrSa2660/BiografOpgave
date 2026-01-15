@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-top-navbar',
@@ -12,7 +13,11 @@ import { ActivatedRoute, RouterOutlet, RouterLink, RouterLinkActive } from '@ang
 export class TopNavbar implements OnInit {
   selectedCity: string | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     // Watch the active child route (e.g. home/:city, login, etc.)
@@ -23,5 +28,18 @@ export class TopNavbar implements OnInit {
       }
       // if no city (like /app/login), keep the old selectedCity
     });
+  }
+
+  get hasUser(): boolean {
+    return !!this.authService.getCurrentUser();
+  }
+
+  get isAdmin(): boolean {
+    return this.authService.getCurrentUser()?.role === 'Admin';
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/cinema-selector']);
   }
 }

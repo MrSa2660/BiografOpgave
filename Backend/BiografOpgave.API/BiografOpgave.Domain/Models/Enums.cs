@@ -7,10 +7,3 @@ public enum BookingStatus
     Cancelled,
     Failed
 }
-
-public enum UserRole
-{
-    User,
-    Admin,
-    Staff
-}

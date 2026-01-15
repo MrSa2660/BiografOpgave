@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { Movie } from '../models/movie.model';
 import { Showtime } from '../models/showtime.model';
+import { ShowtimeService, ScreenResponse, ShowtimeResponse } from '../services/showtime.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -16,9 +17,14 @@ import { Showtime } from '../models/showtime.model';
 export class MovieDetailComponent implements OnInit {
   movie: Movie | undefined;
   city: string | null = null;
-  showtimesByCinema: { cinemaName: string; showtimes: Showtime[] }[] = [];
+  showtimesByCinema: { cinemaName: string; showtimes: ShowtimeResponse[] }[] = [];
+  screens: ScreenResponse[] = [];
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MovieService,
+    private showtimeService: ShowtimeService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -28,20 +34,7 @@ export class MovieDetailComponent implements OnInit {
       this.movieService.getMovieById(id).subscribe((movie) => {
         this.movie = movie;
       });
-      const all = this.movieService.getShowtimesForMovieInCity(id, this.city);
-
-      // group by cinema like your screenshot
-      const byCinema: Record<string, Showtime[]> = {};
-      for (const s of all) {
-        if (!byCinema[s.cinemaName]) {
-          byCinema[s.cinemaName] = [];
-        }
-        byCinema[s.cinemaName].push(s);
-      }
-      this.showtimesByCinema = Object.keys(byCinema).map((name) => ({
-        cinemaName: name,
-        showtimes: byCinema[name],
-      }));
+      this.loadScreensAndShowtimes(id);
     });
   }
 
@@ -60,6 +53,39 @@ export class MovieDetailComponent implements OnInit {
       weekday: 'short',
       day: '2-digit',
       month: '2-digit',
+    });
+  }
+
+  getScreenName(id: number): string {
+    const screen = this.screens.find((s) => s.id === id);
+    return screen?.name ?? `Sal ${id}`;
+  }
+
+  private loadScreensAndShowtimes(movieId: number) {
+    this.showtimeService.getScreens().subscribe({
+      next: (screens) => {
+        this.screens = screens;
+        this.loadShowtimes(movieId);
+      },
+      error: () => {
+        this.screens = [];
+        this.loadShowtimes(movieId);
+      },
+    });
+  }
+
+  private loadShowtimes(movieId: number) {
+    this.showtimeService.getAllShowtimes().subscribe((all) => {
+      const filtered = all.filter((s) => s.movieId === movieId);
+      const byScreen: Record<number, ShowtimeResponse[]> = {};
+      for (const s of filtered) {
+        if (!byScreen[s.screenId]) byScreen[s.screenId] = [];
+        byScreen[s.screenId].push(s);
+      }
+      this.showtimesByCinema = Object.keys(byScreen).map((screenId) => {
+        const name = this.getScreenName(Number(screenId));
+        return { cinemaName: name, showtimes: byScreen[Number(screenId)] };
+      });
     });
   }
 }

@@ -24,6 +24,7 @@ public class ScreensController : ControllerBase
     }
 
     [HttpPost]
+    [AdminOnly]
     public async Task<ActionResult<ScreenDTOResponse>> Create(ScreenDTORequest dto)
     {
         var created = await _service.Create(dto);
@@ -32,6 +33,7 @@ public class ScreensController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [AdminOnly]
     public async Task<ActionResult<ScreenDTOResponse>> Update(int id, ScreenDTORequest dto)
     {
         if (id != dto.Id) return BadRequest();
@@ -41,6 +43,7 @@ public class ScreensController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [AdminOnly]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _service.Delete(id);

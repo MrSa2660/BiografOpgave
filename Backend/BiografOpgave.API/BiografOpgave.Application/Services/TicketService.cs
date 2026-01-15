@@ -12,6 +12,9 @@ public class TicketService : ITicketService
     public async Task<IEnumerable<TicketDTOResponse>> GetForBooking(int bookingId)
         => (await _tickets.GetForBooking(bookingId)).Select(ToDto);
 
+    public async Task<IEnumerable<TicketDTOResponse>> GetForUser(int userId)
+        => (await _tickets.GetForUser(userId)).Select(ToDto);
+
     public async Task<TicketDTOResponse?> GetById(int id)
         => (await _tickets.GetById(id)) is { } ticket ? ToDto(ticket) : null;
 

@@ -23,6 +23,14 @@ public class BookingsController : ControllerBase
         return Ok(booking);
     }
 
+    [HttpGet("user/{userId:int}")]
+    public async Task<ActionResult<IEnumerable<BookingDTOResponse>>> GetForUser(int userId)
+        => Ok(await _service.GetForUser(userId));
+
+    [HttpGet("showtime/{showtimeId:int}/seats")]
+    public async Task<ActionResult<IEnumerable<BookingSeatDTO>>> GetSeatsForShowtime(int showtimeId)
+        => Ok(await _service.GetSeatsForShowtime(showtimeId));
+
     [HttpPost]
     public async Task<ActionResult<BookingDTOResponse>> Create(BookingDTORequest dto)
     {

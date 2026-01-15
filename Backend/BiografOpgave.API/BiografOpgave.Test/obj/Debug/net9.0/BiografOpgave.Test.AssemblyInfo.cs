@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BiografOpgave.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70e3d2dd43b3462f7bf1d4d23f24ef81bcbc5314")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45ef2ca8afa8c92220fabf47c38e45334f5a82b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("BiografOpgave.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BiografOpgave.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

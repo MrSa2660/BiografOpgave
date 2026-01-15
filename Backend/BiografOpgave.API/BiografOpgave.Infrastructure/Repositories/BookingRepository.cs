@@ -26,6 +26,25 @@ public class BookingRepository : IBookingRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(b => b.Id == id);
 
+    public async Task<IEnumerable<Booking>> GetForUser(int userId)
+        => await _context.Bookings
+            .Include(b => b.Seats)
+            .Include(b => b.Tickets)
+            .Where(b => b.UserId == userId)
+            .AsNoTracking()
+            .ToListAsync();
+
+    public async Task<IEnumerable<BookingSeat>> GetSeatsForShowtime(int showtimeId)
+        => await _context.BookingSeats
+            .Include(bs => bs.Booking)
+            .Where(bs =>
+                bs.Booking != null &&
+                bs.Booking.ShowtimeId == showtimeId &&
+                bs.Booking.Status != BookingStatus.Cancelled &&
+                bs.Booking.Status != BookingStatus.Failed)
+            .AsNoTracking()
+            .ToListAsync();
+
     public async Task<Booking> Create(Booking booking)
     {
         _context.Bookings.Add(booking);

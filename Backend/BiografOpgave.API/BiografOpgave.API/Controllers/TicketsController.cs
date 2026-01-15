@@ -15,6 +15,10 @@ public class TicketsController : ControllerBase
     public async Task<ActionResult<IEnumerable<TicketDTOResponse>>> GetForBooking(int bookingId)
         => Ok(await _service.GetForBooking(bookingId));
 
+    [HttpGet("user/{userId:int}")]
+    public async Task<ActionResult<IEnumerable<TicketDTOResponse>>> GetForUser(int userId)
+        => Ok(await _service.GetForUser(userId));
+
     [HttpGet("{id:int}")]
     public async Task<ActionResult<TicketDTOResponse>> Get(int id)
     {

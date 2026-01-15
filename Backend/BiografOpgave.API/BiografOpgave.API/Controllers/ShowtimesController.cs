@@ -24,6 +24,7 @@ public class ShowtimesController : ControllerBase
     }
 
     [HttpPost]
+    [AdminOnly]
     public async Task<ActionResult<ShowtimeDTOResponse>> Create(ShowtimeDTORequest dto)
     {
         var created = await _service.Create(dto);
@@ -31,6 +32,7 @@ public class ShowtimesController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [AdminOnly]
     public async Task<ActionResult<ShowtimeDTOResponse>> Update(int id, ShowtimeDTORequest dto)
     {
         if (id != dto.Id) return BadRequest();
@@ -40,6 +42,7 @@ public class ShowtimesController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [AdminOnly]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _service.Delete(id);

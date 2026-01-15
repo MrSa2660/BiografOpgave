@@ -1,7 +1,6 @@
 <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
   <div class="container">
     <ul class="nav navbar-nav" routerLinkActive="active">
-      <!-- Home: go to /app/home/<city>. If none selected yet, use a default or disable -->
       <li class="nav-item">
         <a
           class="nav-link"
@@ -12,17 +11,24 @@
         </a>
       </li>
 
-      <!-- Admin: alle kan tilgå den for nu -->
-      <li class="nav-item" style="float: right">
+      <li class="nav-item" style="float: right" *ngIf="isAdmin">
         <a class="nav-link" [routerLink]="['/admin']">Admin</a>
       </li>
-
-      <!-- Login -->
-      <li class="nav-item" style="float: right">
-        <a class="nav-link" [routerLink]="['/login']">Login</a>
+      <li class="nav-item" style="float: right" *ngIf="isAdmin">
+        <a class="nav-link" [routerLink]="['/admin/showtimes']">Showtimes</a>
       </li>
 
-      <!-- Link back to selector -->
+      <li class="nav-item" style="float: right" *ngIf="hasUser">
+        <a class="nav-link" [routerLink]="['/tickets']">Tickets</a>
+      </li>
+
+      <li class="nav-item" style="float: right" *ngIf="!hasUser">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
+      </li>
+      <li class="nav-item" style="float: right" *ngIf="hasUser">
+        <a class="nav-link" href="#" (click)="logout(); $event.preventDefault()">Logout</a>
+      </li>
+
       <li class="nav-item" style="float: right">
         <a class="nav-link" [routerLink]="['/cinema-selector']">
           {{ selectedCity || 'Choose cinema' }}

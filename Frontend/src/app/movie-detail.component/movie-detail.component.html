@@ -43,39 +43,22 @@
       <p>Vælg biograf, dag og version – klik på en tid for at vælge sæder.</p>
     </header>
 
-    <div class="legend">
-      <span class="dot dot-high"></span> Ledige sæder 20–100%
-      <span class="dot dot-medium"></span> 10–20% <span class="dot dot-low"></span> 1–10%
-      <span class="dot dot-sold"></span> Udsoldt
-    </div>
-
     <div class="cinema-list">
       <article class="cinema-block" *ngFor="let group of showtimesByCinema">
         <div class="cinema-info">
           <h3>{{ group.cinemaName }}</h3>
           <p class="cinema-city">{{ city }}</p>
-          <a href="#" class="cinema-link">Biograf info</a>
         </div>
 
         <div class="showtime-grid">
-          <div
-            class="showtime-tile"
-            *ngFor="let s of group.showtimes"
-            [ngClass]="{
-              'availability-high': s.availability === 'HIGH',
-              'availability-medium': s.availability === 'MEDIUM',
-              'availability-low': s.availability === 'LOW',
-              'availability-sold': s.availability === 'SOLD_OUT'
-            }"
-            [routerLink]="['/seats', s.id]"
-          >
+          <div class="showtime-tile" *ngFor="let s of group.showtimes" [routerLink]="['/seats', s.id]">
             <div class="tile-date">
-              {{ formatDate(s.date) }}
+              {{ formatDate(s.startTime) }}
             </div>
             <div class="tile-time">
-              {{ s.time }}
+              {{ s.startTime | date : 'shortTime' }}
             </div>
-            <div class="tile-meta">{{ s.hall }} • {{ s.format }}</div>
+            <div class="tile-meta">Sal {{ s.screenId }} · {{ s.language || 'Original' }}</div>
           </div>
         </div>
       </article>

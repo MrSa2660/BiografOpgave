@@ -12,4 +12,16 @@ public class DatabaseContext : DbContext
     public DbSet<Booking> Bookings { get; set; }
     public DbSet<BookingSeat> BookingSeats { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Screen>().HasData(
+            new Screen { Id = 1, Name = "København Sal 1", Rows = 10, SeatsPerRow = 12 },
+            new Screen { Id = 2, Name = "Aarhus Sal 1", Rows = 9, SeatsPerRow = 11 },
+            new Screen { Id = 3, Name = "Aalborg Sal 1", Rows = 8, SeatsPerRow = 10 },
+            new Screen { Id = 4, Name = "Stor København Sal 1", Rows = 10, SeatsPerRow = 10 }
+        );
+    }
 }
