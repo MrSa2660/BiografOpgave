@@ -15,6 +15,14 @@ export interface CreateShowtimeRequest {
 export interface ScreenResponse {
   id: number;
   name: string;
+  city: string;
+  rows: number;
+  seatsPerRow: number;
+}
+
+export interface CreateScreenRequest {
+  name: string;
+  city: string;
   rows: number;
   seatsPerRow: number;
 }
@@ -43,6 +51,12 @@ export class ShowtimeService {
 
   getScreens(): Observable<ScreenResponse[]> {
     return this.http.get<ScreenResponse[]>(`${this.baseUrl}/screens`);
+  }
+
+  createScreen(payload: CreateScreenRequest): Observable<ScreenResponse> {
+    return this.http.post<ScreenResponse>(`${this.baseUrl}/screens`, payload, {
+      headers: this.auth.authHeaders(true),
+    });
   }
 
   getAllShowtimes(): Observable<ShowtimeResponse[]> {

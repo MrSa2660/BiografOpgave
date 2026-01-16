@@ -1,3 +1,7 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+
 namespace BiografOpgave.API.Controllers;
 
 [ApiController]
@@ -15,9 +19,21 @@ public class TicketsController : ControllerBase
     public async Task<ActionResult<IEnumerable<TicketDTOResponse>>> GetForBooking(int bookingId)
         => Ok(await _service.GetForBooking(bookingId));
 
+    [Authorize]
     [HttpGet("user/{userId:int}")]
     public async Task<ActionResult<IEnumerable<TicketDTOResponse>>> GetForUser(int userId)
-        => Ok(await _service.GetForUser(userId));
+    {
+        var principal = HttpContext.User;
+        var role = principal.FindFirst(ClaimTypes.Role)?.Value ?? string.Empty;
+        var sub = principal.FindFirst(JwtRegisteredClaimNames.Sub)?.Value
+            ?? principal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var isAdmin = string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
+
+        if (!isAdmin && (!int.TryParse(sub, out var requesterId) || requesterId != userId))
+            return Forbid();
+
+        return Ok(await _service.GetForUser(userId));
+    }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<TicketDTOResponse>> Get(int id)

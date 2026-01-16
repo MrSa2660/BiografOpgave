@@ -372,3 +372,4 @@ C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\Biogr
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\BiografOpgave.Application.dll
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\BiografOpgave.Application.pdb
 C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\Scalar.AspNetCore.dll
+C:\Users\MrSa2660\Documents\GitHub\BiografOpgave\Backend\BiografOpgave.API\BiografOpgave.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -1,3 +1,8 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+
 namespace BiografOpgave.API.Controllers;
 
 [ApiController]
@@ -5,10 +10,12 @@ namespace BiografOpgave.API.Controllers;
 public class UsersController : ControllerBase
 {
     private readonly IUserService _service;
+    private readonly IConfiguration _config;
 
-    public UsersController(IUserService service)
+    public UsersController(IUserService service, IConfiguration config)
     {
         _service = service;
+        _config = config;
     }
 
     [HttpGet]
@@ -24,11 +31,17 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<UserDTOResponse>> Login(UserLoginRequest request)
+    public async Task<ActionResult<UserLoginResponse>> Login(UserLoginRequest request)
     {
         var user = await _service.Authenticate(request.Email, request.Password);
         if (user == null) return Unauthorized();
-        return Ok(user);
+
+        var token = GenerateJwt(user);
+        return Ok(new UserLoginResponse
+        {
+            User = user,
+            Token = token
+        });
     }
 
     [HttpPost]
@@ -54,5 +67,29 @@ public class UsersController : ControllerBase
         var deleted = await _service.Delete(id);
         if (!deleted) return NotFound();
         return NoContent();
+    }
+
+    private string GenerateJwt(UserDTOResponse user)
+    {
+        var key = _config["Jwt:Key"] ?? "dev-secret-key-change-me-32chars-min-2026!";
+        var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+        var creds = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new[]
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            new Claim(ClaimTypes.Role, user.Role ?? "User")
+        };
+
+        var token = new JwtSecurityToken(
+            issuer: _config["Jwt:Issuer"],
+            audience: _config["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(2),
+            signingCredentials: creds
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }

@@ -38,18 +38,11 @@ label {
   color: #0f172a;
 }
 
-input,
-select {
+input {
   padding: 0.55rem 0.65rem;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font: inherit;
-}
-
-.checkbox {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .btn {
@@ -103,50 +96,23 @@ select {
   padding: 0;
 }
 
-.showtime-list {
+.screen-list {
   display: grid;
   gap: 0.75rem;
 }
 
-.showtime-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+.screen-row {
   padding: 0.75rem;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   background: #f8fafc;
 }
 
-.showtime-row strong {
-  display: block;
+.screen-row strong {
   color: #0f172a;
-  margin-bottom: 0.25rem;
 }
 
 .meta {
   color: #475569;
   font-size: 0.9rem;
-}
-
-.showtime-tags {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.price {
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.tag {
-  background: #e2e8f0;
-  color: #0f172a;
-  border-radius: 999px;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.8rem;
 }

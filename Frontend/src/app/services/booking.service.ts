@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 export interface ApiShowtime {
   id: number;
@@ -59,6 +60,7 @@ export interface BookedSeat {
 @Injectable({ providedIn: 'root' })
 export class BookingService {
   private http = inject(HttpClient);
+  private auth = inject(AuthService);
   private baseUrl = 'http://localhost:5104/api';
 
   getShowtime(showtimeId: number): Observable<ApiShowtime> {
@@ -74,14 +76,20 @@ export class BookingService {
   }
 
   createBooking(request: BookingRequest): Observable<BookingResponse> {
-    return this.http.post<BookingResponse>(`${this.baseUrl}/bookings`, request);
+    return this.http.post<BookingResponse>(`${this.baseUrl}/bookings`, request, {
+      headers: this.auth.authHeaders(),
+    });
   }
 
   getUserBookings(userId: number): Observable<BookingResponse[]> {
-    return this.http.get<BookingResponse[]>(`${this.baseUrl}/bookings/user/${userId}`);
+    return this.http.get<BookingResponse[]>(`${this.baseUrl}/bookings/user/${userId}`, {
+      headers: this.auth.authHeaders(),
+    });
   }
 
   getUserTickets(userId: number): Observable<TicketResponse[]> {
-    return this.http.get<TicketResponse[]>(`${this.baseUrl}/tickets/user/${userId}`);
+    return this.http.get<TicketResponse[]>(`${this.baseUrl}/tickets/user/${userId}`, {
+      headers: this.auth.authHeaders(),
+    });
   }
 }

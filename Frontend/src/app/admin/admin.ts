@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { MovieService } from '../services/movie.service';
-import { Movie } from '../models/movie.model';
+import { MovieService, CreateMovieRequest } from '../services/movie.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,40 +12,34 @@ import { Movie } from '../models/movie.model';
   templateUrl: './admin.html',
   styleUrls: ['./admin.css'],
 })
-  export class Admin {
-    // Selected city for the new movie
-  city: string = 'København';
-
+export class Admin {
   // Form fields
-  title: string = '';
-  posterUrl: string = '';
-  rating: string = '';
+  title = '';
+  description = '';
+  posterUrl = '';
+  trailerUrl = '';
+  rating = '';
   durationMinutes: number | null = null;
-  genresText: string = '';          // e.g. "Action, Sci-Fi"
-  language: string = 'English';
-  showtimesText: string = '';       // e.g. "18:30, 21:00"
-  makeHighlight: boolean = false;   // mark as highlight movie
+  genresText = ''; // e.g. "Action, Sci-Fi"
+  language = 'English';
+  makeHighlight = false; // mark as highlight movie
+  isNowShowing = true;
+  releaseDate = '';
 
   // Feedback message shown in UI
   message: string | null = null;
-
-  // Dropdown list of available cities
-  cities = [
-    'København',
-    'Stor København',
-    'Aarhus',
-    'Aalborg',
-    'Fyn',
-    'Nykøbing Falster',
-  ];
+  error: string | null = null;
 
   constructor(private movieService: MovieService) {}
 
   /** Validates input, builds movie object, and adds it to the service */
   addMovie() {
+    this.error = null;
+    this.message = null;
+
     // Check required fields
-    if (!this.title || !this.posterUrl) {
-      this.message = 'Title and poster URL are required.';
+    if (!this.title || !this.posterUrl || !this.durationMinutes) {
+      this.error = 'Title, poster URL, and duration are required.';
       return;
     }
 
@@ -56,42 +49,43 @@ import { Movie } from '../models/movie.model';
       .map((g) => g.trim())
       .filter((g) => g);
 
-    const showtimes = this.showtimesText
-      .split(',')
-      .map((t) => t.trim())
-      .filter((t) => t);
-
-      // Build a movie object without the ID (service generates it)
-    const movieData: Omit<Movie, 'id'> = {
-      title: this.title,                     // movie title from form
-      posterUrl: this.posterUrl,             // poster image URL
-      rating: this.rating || 'PG',           // fallback rating if empty
-      durationMinutes: this.durationMinutes ?? 120,  // default to 120 min
-      genres,                                // genre list from input text
-      showtimes,                             // showtimes list from input text
-      language: this.language || 'English',  // movie language
-      cities: [this.city],                   // selected city (as array)
-      isHighlight: this.makeHighlight,       // mark as highlight movie
+    // Build a movie object without the ID (service generates it)
+    const movieData: CreateMovieRequest = {
+      title: this.title, // movie title from form
+      description: this.description.trim(),
+      posterUrl: this.posterUrl, // poster image URL
+      trailerUrl: this.trailerUrl.trim(),
+      rating: this.rating || 'PG', // fallback rating if empty
+      durationMinutes: this.durationMinutes ?? 120, // default to 120 min
+      genres, // genre list from input text
+      language: this.language || 'English', // movie language
+      isHighlight: this.makeHighlight, // mark as highlight movie
+      isNowShowing: this.isNowShowing,
+      releaseDate: this.releaseDate ? new Date(this.releaseDate).toISOString() : null,
     };
 
     // Save movie using service
     this.movieService.addMovie(movieData).subscribe({
       next: () => {
         // Show success message
-        this.message = `Movie "${this.title}" added for ${this.city}.`;
+        this.message = `Movie "${movieData.title}" added.`;
+        this.error = null;
 
         // Reset form fields
         this.title = '';
+        this.description = '';
         this.posterUrl = '';
+        this.trailerUrl = '';
         this.rating = '';
         this.durationMinutes = null;
         this.genresText = '';
         this.language = 'English';
-        this.showtimesText = '';
         this.makeHighlight = false;
+        this.isNowShowing = true;
+        this.releaseDate = '';
       },
       error: () => {
-        this.message = 'Could not save the movie. Please try again.';
+        this.error = 'Could not save the movie. Please try again.';
       },
     });
   }
