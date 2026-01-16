@@ -93,7 +93,7 @@ public class DatabaseContext : DbContext
                 Id = 1,
                 MovieId = 1,
                 ScreenId = 1,
-                StartTime = new DateTime(2025, 1, 15, 18, 30, 0, DateTimeKind.Utc),
+                StartTime = new DateTime(2026, 1, 16, 18, 30, 0, DateTimeKind.Utc),
                 BasePrice = 110m,
                 Is3D = false,
                 Language = "English"
@@ -103,7 +103,7 @@ public class DatabaseContext : DbContext
                 Id = 2,
                 MovieId = 1,
                 ScreenId = 1,
-                StartTime = new DateTime(2025, 1, 15, 21, 0, 0, DateTimeKind.Utc),
+                StartTime = new DateTime(2026, 1, 16, 21, 0, 0, DateTimeKind.Utc),
                 BasePrice = 120m,
                 Is3D = true,
                 Language = "English"
@@ -113,7 +113,7 @@ public class DatabaseContext : DbContext
                 Id = 3,
                 MovieId = 2,
                 ScreenId = 2,
-                StartTime = new DateTime(2025, 1, 16, 19, 0, 0, DateTimeKind.Utc),
+                StartTime = new DateTime(2026, 1, 17, 19, 0, 0, DateTimeKind.Utc),
                 BasePrice = 95m,
                 Is3D = false,
                 Language = "Danish"
@@ -123,7 +123,7 @@ public class DatabaseContext : DbContext
                 Id = 4,
                 MovieId = 2,
                 ScreenId = 3,
-                StartTime = new DateTime(2025, 1, 16, 21, 15, 0, DateTimeKind.Utc),
+                StartTime = new DateTime(2026, 1, 17, 21, 15, 0, DateTimeKind.Utc),
                 BasePrice = 95m,
                 Is3D = false,
                 Language = "Danish"
@@ -133,7 +133,7 @@ public class DatabaseContext : DbContext
                 Id = 5,
                 MovieId = 3,
                 ScreenId = 4,
-                StartTime = new DateTime(2025, 2, 20, 20, 0, 0, DateTimeKind.Utc),
+                StartTime = new DateTime(2026, 2, 20, 20, 0, 0, DateTimeKind.Utc),
                 BasePrice = 130m,
                 Is3D = true,
                 Language = "English"
